@@ -129,3 +129,9 @@ section:not(:first-of-type) .accordion {
         color: var(--pink)
     }
 }
+
+@media (width >= 1440px) {
+    body {
+        background: var(--light-pink) url(../assets/images/background-pattern-desktop.svg) top / contain no-repeat;
+    }
+}
