@@ -3,12 +3,14 @@
     --light-pink: hsl(275, 100%, 97%);
     --grayish-purple: hsl(292, 16%, 49%);
     --dark-purple: hsl(292, 42%, 14%);
+    --pink: hsl(281, 83%, 54%);
 
     --text-lg: 2rem;
     --text-base: 1rem;
     --text-sm: 0.875rem;
 
     --spacing: 24px;
+    --spacing-lg: 40px;
 }
 
 @font-face {
@@ -63,11 +65,12 @@ h1::before {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    padding-block: var(--spacing);
+    padding-block: 20px;
     font-family: "Work";
     font-size: var(--text-base);
     text-align: left;
     font-weight: 600;
+    transition: ease 0.5s;
 }
 
 .accordion::after {
@@ -78,18 +81,51 @@ h1::before {
     content: url(../assets/images/icon-minus.svg);
 }
 
-.accordion:not(.active) {
+section:not(:first-of-type) .accordion {
     border-top: 1px solid var(--light-pink);
 }
 
 .content {
-    display: none;
     font-size: var(--text-sm);
     line-height: 150%;
     color: var(--grayish-purple);
-    margin-bottom: var(--spacing);
+    max-height: 0;
+    transition: max-height 0.5s ease;
+    overflow: hidden;
 }
 
 .content.active {
-    display: block;
+    max-height: 200px;
+    margin-bottom: var(--spacing);
+}
+
+@media (width >= 375px) {
+    :root {
+        --text-lg: 3.5rem;
+        --text-base: 1.125rem;
+        --text-sm: 1rem;
+    }
+
+    body {
+        background: var(--light-pink) url(../assets/images/background-pattern-desktop.svg) no-repeat;
+    }
+
+    article {
+        padding: var(--spacing-lg) var(--spacing-lg) 16px;
+    }
+
+    h1 {
+        gap: var(--spacing);
+        margin-bottom: 8px;
+    }
+    
+    h1::before {
+        transform: unset;
+    }
+}
+
+@media (hover: hover) {
+    .accordion:hover {
+        color: var(--pink)
+    }
 }
